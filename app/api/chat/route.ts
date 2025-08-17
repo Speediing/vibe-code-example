@@ -43,7 +43,8 @@ export async function POST(request: NextRequest) {
         projectId: project.id,
         chatId: chat.id,
       });
-      chat = await v0.chats.create({
+      chat = await v0.chats.sendMessage({
+        chatId: chat.id,
         message,
       });
     }
