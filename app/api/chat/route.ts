@@ -22,27 +22,6 @@ export async function POST(request: NextRequest) {
       });
     } else {
       // create new chat
-      const project = await v0.projects.create({
-        name: "My Project",
-        environmentVariables: [
-          {
-            key: "V0_API_KEY",
-            value: process.env.V0_API_KEY ?? "",
-          },
-        ],
-      });
-
-      chat = await v0.chats.init({
-        type: "repo",
-        repo: {
-          url: "https://github.com/Speediing/vibe-code-example",
-          branch: "main",
-        },
-      });
-      const result = await v0.projects.assign({
-        projectId: project.id,
-        chatId: chat.id,
-      });
       chat = await v0.chats.create({
         message,
       });
